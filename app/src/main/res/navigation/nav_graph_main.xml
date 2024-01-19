@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/menu_nav_main_category">
+
+    <fragment
+        android:id="@+id/menu_nav_main_category"
+        android:name="com.rhezarijaya.yummyapp.ui.fragment.category.CategoryFragment"
+        android:label="@string/category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/menu_nav_main_favorite"
+        android:name="com.rhezarijaya.favorite.ui.fragment.favorite.FavoriteFragment"
+        android:label="@string/favorite"
+        app:moduleName="favorite" />
+
+</navigation>
