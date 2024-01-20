@@ -38,7 +38,24 @@ class RemoteDataSource @Inject constructor(private val apiService: TheMealDbAPIS
                     .getFoodsByCategory(BuildConfig.THE_MEAL_DB_API_KEY, category)
                     .data
 
-                if (foodItems.isNotEmpty()) {
+                if (!foodItems.isNullOrEmpty()) {
+                    emit(RemoteResult.Success(foodItems))
+                } else {
+                    emit(RemoteResult.Empty)
+                }
+            } catch (e: Exception) {
+                emit(RemoteResult.Error(e))
+            }
+        }.flowOn(Dispatchers.IO)
+
+    fun searchFoodByName(searchQuery: String): Flow<RemoteResult<List<FoodFilterItemResponse>>> =
+        flow {
+            try {
+                val foodItems = apiService
+                    .searchFoodByName(BuildConfig.THE_MEAL_DB_API_KEY, searchQuery)
+                    .data
+
+                if (!foodItems.isNullOrEmpty()) {
                     emit(RemoteResult.Success(foodItems))
                 } else {
                     emit(RemoteResult.Empty)
@@ -55,7 +72,7 @@ class RemoteDataSource @Inject constructor(private val apiService: TheMealDbAPIS
                     .getFoodDetail(BuildConfig.THE_MEAL_DB_API_KEY, id)
                     .data
 
-                if (foodDetail.isNotEmpty()) {
+                if (!foodDetail.isNullOrEmpty()) {
                     emit(RemoteResult.Success(foodDetail[0]))
                 } else {
                     emit(RemoteResult.Empty)

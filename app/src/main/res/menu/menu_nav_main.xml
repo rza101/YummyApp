@@ -5,6 +5,10 @@
         android:icon="@drawable/baseline_format_list_bulleted_24"
         android:title="@string/category" />
     <item
+        android:id="@+id/menu_nav_main_search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="@string/search" />
+    <item
         android:id="@+id/menu_nav_main_favorite"
         android:icon="@drawable/baseline_favorite_24"
         android:title="@string/favorite" />

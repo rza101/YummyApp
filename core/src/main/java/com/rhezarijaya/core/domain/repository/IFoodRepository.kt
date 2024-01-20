@@ -10,6 +10,8 @@ interface IFoodRepository {
 
     fun getFoodsByCategory(category: String): Flow<Resource<List<Food>>>
 
+    fun searchFoodByName(searchQuery: String): Flow<Resource<List<Food>>>
+
     fun getFoodDetail(id: String): Flow<Resource<Food>>
 
     fun addFavoriteFood(food: Food)

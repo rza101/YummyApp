@@ -5,6 +5,7 @@ object Constants {
     const val DATABASE_NAME = "db_yummyapp"
 
     // MAGIC NUMBERS
+    const val SEARCH_DEBOUNCE = 500L
     const val SPLASH_SCREEN_DELAY = 2500L
     const val SWIPE_REFRESH_LAYOUT_DISTANCE = 400
 

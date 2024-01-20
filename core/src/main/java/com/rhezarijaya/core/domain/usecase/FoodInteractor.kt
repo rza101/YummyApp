@@ -16,6 +16,9 @@ class FoodInteractor @Inject constructor(
     override fun getFoodsByCategory(category: String): Flow<Resource<List<Food>>> =
         foodRepository.getFoodsByCategory(category)
 
+    override fun searchFoodByName(searchQuery: String): Flow<Resource<List<Food>>> =
+        foodRepository.searchFoodByName(searchQuery)
+
     override fun getFoodDetail(id: String): Flow<Resource<Food>> =
         foodRepository.getFoodDetail(id)
 

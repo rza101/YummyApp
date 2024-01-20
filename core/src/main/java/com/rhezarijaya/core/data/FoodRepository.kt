@@ -68,6 +68,29 @@ class FoodRepository @Inject constructor(
             }
         }
 
+    override fun searchFoodByName(searchQuery: String): Flow<Resource<List<Food>>> =
+        flow {
+            emit(Resource.Loading())
+
+            when (val result = remoteDataSource.searchFoodByName(searchQuery).first()) {
+                is RemoteResult.Success -> {
+                    emit(Resource.Success(
+                        result.data.map {
+                            it.toDomain()
+                        }
+                    ))
+                }
+
+                RemoteResult.Empty -> {
+                    emit(Resource.Success(listOf()))
+                }
+
+                is RemoteResult.Error -> {
+                    emit(Resource.Error(result.exception))
+                }
+            }
+        }
+
     override fun getFoodDetail(id: String): Flow<Resource<Food>> =
         flow {
             emit(Resource.Loading())

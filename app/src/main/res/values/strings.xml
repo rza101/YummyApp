@@ -6,5 +6,7 @@
     <string name="favorite">Favorite</string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">Instructions</string>
+    <string name="search">Search</string>
+    <string name="search_food">Search food</string>
     <string name="youtube_video">YouTube Video</string>
 </resources>

@@ -19,6 +19,12 @@ interface TheMealDbAPIService {
         @Query("c") category: String
     ): FoodFilterResponse
 
+    @GET("{api_key}/search.php")
+    suspend fun searchFoodByName(
+        @Path("api_key") apiKey: String,
+        @Query("s") searchQuery: String
+    ): FoodFilterResponse
+
     @GET("{api_key}/lookup.php")
     suspend fun getFoodDetail(
         @Path("api_key") apiKey: String,

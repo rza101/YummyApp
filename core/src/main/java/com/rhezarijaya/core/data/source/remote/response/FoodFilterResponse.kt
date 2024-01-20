@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class FoodFilterResponse(
     @field:SerializedName("meals")
-    val data: List<FoodFilterItemResponse>
+    val data: List<FoodFilterItemResponse>?
 ) : Parcelable
