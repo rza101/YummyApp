@@ -10,7 +10,6 @@ import com.rhezarijaya.core.util.Constants
 import com.rhezarijaya.core.util.toDomain
 import com.rhezarijaya.core.util.toEntity
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -21,6 +20,7 @@ import javax.inject.Inject
 class FoodRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val roomDataSource: RoomDataSource,
+    private val databaseCoroutineScope: CoroutineScope,
 ) : IFoodRepository {
     override fun getFoodCategories(): Flow<Resource<List<FoodCategory>>> =
         flow {
@@ -111,7 +111,7 @@ class FoodRepository @Inject constructor(
         }
 
     override fun addFavoriteFood(food: Food) {
-        CoroutineScope(Dispatchers.IO).launch {
+        databaseCoroutineScope.launch {
             roomDataSource.insertFavoriteFood(food.toEntity())
         }
     }
@@ -129,7 +129,7 @@ class FoodRepository @Inject constructor(
         }
 
     override fun deleteFavoriteFood(food: Food) {
-        CoroutineScope(Dispatchers.IO).launch {
+        databaseCoroutineScope.launch {
             roomDataSource.deleteFavoriteFood(food.toEntity())
         }
     }

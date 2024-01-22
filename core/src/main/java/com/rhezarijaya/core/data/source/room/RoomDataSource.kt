@@ -13,9 +13,9 @@ class RoomDataSource @Inject constructor(private val favoriteFoodDao: FavoriteFo
     fun getFavoriteFoodById(id: String) =
         favoriteFoodDao.getFavoriteFoodById(id)
 
-    fun insertFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity) =
+    suspend fun insertFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity) =
         favoriteFoodDao.insertFavoriteFood(favoriteFoodEntity)
 
-    fun deleteFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity) =
+    suspend fun deleteFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity) =
         favoriteFoodDao.deleteFavoriteFood(favoriteFoodEntity)
 }

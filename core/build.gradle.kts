@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("com.google.dagger.hilt.android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.android")
 }
@@ -58,7 +58,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
     // room
-    kapt("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
 }

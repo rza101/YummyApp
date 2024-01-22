@@ -16,6 +16,7 @@
             android:id="@+id/iv_thumbnail"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/category_thumbnail"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -17,8 +17,8 @@ interface FavoriteFoodDao {
     fun getFavoriteFoodById(id: String): Flow<FavoriteFoodEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity)
+    suspend fun insertFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity)
 
     @Delete
-    fun deleteFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity)
+    suspend fun deleteFavoriteFood(favoriteFoodEntity: FavoriteFoodEntity)
 }

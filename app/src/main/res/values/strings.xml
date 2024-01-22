@@ -4,6 +4,7 @@
     <string name="area">Area</string>
     <string name="category">Category</string>
     <string name="favorite">Favorite</string>
+    <string name="food_thumbnail">Food Thumbnail</string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">Instructions</string>
     <string name="search">Search</string>
