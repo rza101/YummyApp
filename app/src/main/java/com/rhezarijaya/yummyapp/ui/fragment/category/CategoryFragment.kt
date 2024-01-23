@@ -21,8 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragment : Fragment() {
-    private lateinit var itemFoodCategoryAdapter: ItemFoodCategoryAdapter
-
     private var _binding: FragmentCategoryBinding? = null
     private val binding: FragmentCategoryBinding
         get() = _binding!!
@@ -42,7 +40,7 @@ class CategoryFragment : Fragment() {
 
         val activity = requireActivity()
 
-        itemFoodCategoryAdapter = ItemFoodCategoryAdapter {
+        val itemFoodCategoryAdapter = ItemFoodCategoryAdapter {
             startActivity(
                 Intent(activity, FoodListActivity::class.java).apply {
                     putExtra(FoodListActivity.EXTRA_CATEGORY_NAME_KEY, it.name)
@@ -59,27 +57,27 @@ class CategoryFragment : Fragment() {
             setDistanceToTriggerSync(Constants.SWIPE_REFRESH_LAYOUT_DISTANCE)
             setOnRefreshListener {
                 isRefreshing = false
-                loadData(activity)
+                loadData(activity, itemFoodCategoryAdapter)
             }
         }
 
-        loadData(activity)
+        loadData(activity, itemFoodCategoryAdapter)
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 
-    private fun loadData(context: Context) {
-        itemFoodCategoryAdapter.submitList(listOf())
+    private fun loadData(context: Context, adapter: ItemFoodCategoryAdapter) {
+        adapter.submitList(listOf())
 
         viewModel.getFoodCategories().observe(viewLifecycleOwner) {
             binding.progressBar.isVisible = it is Resource.Loading
 
             when (it) {
                 is Resource.Success -> {
-                    itemFoodCategoryAdapter.submitList(it.data)
+                    adapter.submitList(it.data)
                 }
 
                 is Resource.Loading -> {}

@@ -22,7 +22,6 @@ import javax.inject.Inject
 class FavoriteFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var itemFoodAdapter: ItemFoodAdapter
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding: FragmentFavoriteBinding
@@ -58,8 +57,7 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val activity = requireActivity()
-
-        itemFoodAdapter = ItemFoodAdapter {
+        val itemFoodAdapter = ItemFoodAdapter {
             startActivity(
                 Intent(activity, DetailActivity::class.java).apply {
                     putExtra(DetailActivity.EXTRA_FOOD_ID_KEY, it.id)
@@ -72,14 +70,14 @@ class FavoriteFragment : Fragment() {
             layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         }
 
-        viewModel.getFavoriteFoods().observe(activity) {
+        viewModel.getFavoriteFoods().observe(viewLifecycleOwner) {
             _binding?.tvNoItem?.isVisible = it.isEmpty()
             itemFoodAdapter.submitList(it)
         }
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 }

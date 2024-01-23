@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="coral">#F37748</color>
     <color name="dim_gray">#65655E</color>
-    <color name="eggplant">#744253</color>
-    <color name="pear">#C2E812</color>
-    <color name="seasalt">#F9F8F8</color>
 </resources>

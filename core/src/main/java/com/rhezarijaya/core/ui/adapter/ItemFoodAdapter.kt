@@ -37,7 +37,7 @@ class ItemFoodAdapter(
         }
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         val binding: ItemFoodBinding
     ) : RecyclerView.ViewHolder(binding.root)
 

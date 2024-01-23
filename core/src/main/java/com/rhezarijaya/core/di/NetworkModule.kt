@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,6 +25,21 @@ class NetworkModule {
                     HttpLoggingInterceptor.Level.NONE
                 }
             )
+        ).certificatePinner(
+            CertificatePinner.Builder()
+                .add(
+                    BuildConfig.THE_MEAL_DB_HOSTNAME,
+                    BuildConfig.THE_MEAL_DB_PIN_1
+                )
+                .add(
+                    BuildConfig.THE_MEAL_DB_HOSTNAME,
+                    BuildConfig.THE_MEAL_DB_PIN_2
+                )
+                .add(
+                    BuildConfig.THE_MEAL_DB_HOSTNAME,
+                    BuildConfig.THE_MEAL_DB_PIN_3
+                )
+                .build()
         ).build()
 
     @Provides

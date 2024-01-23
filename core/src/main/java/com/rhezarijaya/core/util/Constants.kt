@@ -3,6 +3,7 @@ package com.rhezarijaya.core.util
 object Constants {
     // DATABASE
     const val DATABASE_NAME = "db_yummyapp"
+    const val DATABASE_KEY = "yummyapp"
 
     // MAGIC NUMBERS
     const val SEARCH_DEBOUNCE = 500L

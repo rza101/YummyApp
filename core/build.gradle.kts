@@ -28,12 +28,39 @@ android {
             "THE_MEAL_DB_BASE_URL",
             "\"https://www.themealdb.com/api/json/v1/\""
         )
+        buildConfigField(
+            "String",
+            "THE_MEAL_DB_HOSTNAME",
+            "\"www.themealdb.com\""
+        )
+        buildConfigField(
+            "String",
+            "THE_MEAL_DB_PIN_1",
+            "\"sha256/SixxdJm2Bb2eag6Iz05yDKCIRIaK9P629RlokEfmHLQ=\""
+        )
+        buildConfigField(
+            "String",
+            "THE_MEAL_DB_PIN_2",
+            "\"sha256/81Wf12bcLlFHQAfJluxnzZ6Frg+oJ9PWY/Wrwur8viQ=\""
+        )
+        buildConfigField(
+            "String",
+            "THE_MEAL_DB_PIN_3",
+            "\"sha256/hxqRlPTu1bMS/0DITB1SSu0vd4u/8l8TjPgfaAp63Gc=\""
+        )
         buildConfigField("String", "THE_MEAL_DB_API_KEY", "\"1\"")
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -61,4 +88,6 @@ dependencies {
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.sqlite:sqlite-ktx:2.4.0")
+    implementation("net.zetetic:android-database-sqlcipher:4.4.0")
 }

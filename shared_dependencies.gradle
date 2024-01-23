@@ -19,4 +19,7 @@ dependencies {
 
     // viewmodel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    // leak canary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.13")
 }

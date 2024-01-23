@@ -57,6 +57,7 @@ class SearchFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText?.isBlank() == true) {
+                    binding.tvNoItem.isVisible = false
                     itemFoodAdapter.submitList(listOf())
                 }
 
@@ -72,6 +73,7 @@ class SearchFragment : Fragment() {
             when (it) {
                 is Resource.Success -> {
                     if (_binding?.searchView?.query?.isNotBlank() == true) {
+                        _binding?.tvNoItem?.isVisible = it.data?.isEmpty() == true
                         itemFoodAdapter.submitList(it.data)
                     }
                 }
@@ -89,8 +91,8 @@ class SearchFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 }

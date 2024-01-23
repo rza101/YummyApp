@@ -28,6 +28,19 @@
         app:layout_constraintTop_toBottomOf="@id/search_view"
         tools:listitem="@layout/item_food" />
 
+    <TextView
+        android:id="@+id/tv_no_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/root_padding"
+        android:text="@string/no_item"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

@@ -11,6 +11,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +32,10 @@ class RoomModule {
             context,
             YummyAppDatabase::class.java,
             Constants.DATABASE_NAME
-        ).fallbackToDestructiveMigration()
+        )
+            .fallbackToDestructiveMigration()
+            .openHelperFactory(
+                SupportFactory(SQLiteDatabase.getBytes(Constants.DATABASE_KEY.toCharArray()))
+            )
             .build()
 }
